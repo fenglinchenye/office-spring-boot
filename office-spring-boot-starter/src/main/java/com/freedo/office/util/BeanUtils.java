@@ -64,6 +64,9 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
         if (StringUtils.isBlank(str)){
             return str;
         }
-        return str.substring(0,1).toLowerCase()+str.substring(1);
+        if (str.length()>1) {
+            return str.substring(0, 1).toLowerCase() + str.substring(1);
+        }
+        return str.toLowerCase();
     }
 }
