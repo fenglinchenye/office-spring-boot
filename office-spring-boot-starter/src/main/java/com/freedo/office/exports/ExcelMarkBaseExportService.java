@@ -141,7 +141,7 @@ public abstract class ExcelMarkBaseExportService extends BaseExportService {
                 && excelExportEntity.getFormat().equals(PoiBaseConstants.IS_ADD_INDEX)) {
 
             // 字段是否被标记
-            if (!markPropertySet.contains(BeanUtils.getPropertyByGetterMethod(excelExportEntity.getMethod()))){
+            if (!markPropertySet.contains(BeanUtils.parse(excelExportEntity.getMethod()))){
                 createStringCell(row, 0, currentIndex + StringUtils.EMPTY,
                         index % 2 == 0 ? getStyles(false, null) : getStyles(true, null), null);
             }else{
@@ -173,7 +173,7 @@ public abstract class ExcelMarkBaseExportService extends BaseExportService {
                                  MarkCellStyle markCellStyle,
                                  Workbook workbook) {
         // 标记字段包含方法
-        if (!markPropertySet.contains(BeanUtils.getPropertyByGetterMethod(entity.getMethod()))) {
+        if (!markPropertySet.contains(BeanUtils.parse(entity.getMethod()))) {
             createStringCell(row, cellNum, Objects.isNull(value) ? StringUtils.EMPTY : value.toString(),
                     index % 2 == 0 ? getStyles(false, entity) : getStyles(true, entity),
                     entity);
@@ -204,7 +204,7 @@ public abstract class ExcelMarkBaseExportService extends BaseExportService {
                                  MarkCellStyle markCellStyle,
                                  Workbook workbook) {
         // 字段是否被标记
-        if (!markPropertySet.contains(BeanUtils.getPropertyByGetterMethod(entity.getMethod()))) {
+        if (!markPropertySet.contains(BeanUtils.parse(entity.getMethod()))) {
             createDoubleCell(row, cellNum, Objects.isNull(value) ? StringUtils.EMPTY : value.toString(),
                     index % 2 == 0 ? getStyles(false, entity) : getStyles(true, entity),
                     entity);

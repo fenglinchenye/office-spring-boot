@@ -40,11 +40,11 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
     }
 
     /**
-     * 获得属性根据getter方法
+     * 获得属性根据getter方法 获得其成员变量
      * @param method
      * @return
      */
-    public static String getPropertyByGetterMethod(Method method){
+    public static String parse(Method method){
         String name = method.getName();
         if (name.startsWith(SystemConstant.GET_PREFIX)) {
             return firstCharLowCase(name.replace(SystemConstant.GET_PREFIX, StringUtils.EMPTY));
