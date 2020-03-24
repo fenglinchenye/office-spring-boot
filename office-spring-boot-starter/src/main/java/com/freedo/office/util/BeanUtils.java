@@ -36,7 +36,10 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
                 }
             }
         }
-        throw new RuntimeException(MessageFormat.format("this class :{1} not have property :{2} or not have public get method for this {3} property",source.getClass().getName(),propertyName,propertyName));
+        throw new RuntimeException(MessageFormat.format("this class :{1} not have property :{2} or not have public get method for this {3} property",
+                source.getClass().getName(),
+                propertyName,
+                propertyName));
     }
 
     /**
@@ -64,9 +67,9 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
         if (StringUtils.isBlank(str)){
             return str;
         }
-        if (str.length()==1){
+        if (str.length()==1) {
             return str.toLowerCase();
         }
-        return str.substring(0,1).toLowerCase()+str.substring(1);
+        return str.substring(0, 1).toLowerCase() + str.substring(1);
     }
 }

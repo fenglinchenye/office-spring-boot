@@ -137,8 +137,11 @@ public abstract class ExcelMarkBaseExportService extends BaseExportService {
      * @return
      */
     private int createIndexCell(Row row, int index, ExcelExportEntity excelExportEntity,Workbook workbook,Set<String> markPropertySet, MarkCellStyle markCellStyle) {
-        if (Objects.isNull(excelExportEntity.getName()) && SystemConstant.SEQUENCE_NO_CHINESE.equals(excelExportEntity.getName()) && excelExportEntity.getFormat() != null
-                && excelExportEntity.getFormat().equals(PoiBaseConstants.IS_ADD_INDEX)) {
+        boolean flag = Objects.isNull(excelExportEntity.getName()) &&
+                SystemConstant.SEQUENCE_NO_CHINESE.equals(excelExportEntity.getName()) &&
+                excelExportEntity.getFormat() != null &&
+                excelExportEntity.getFormat().equals(PoiBaseConstants.IS_ADD_INDEX);
+        if (flag) {
 
             // 字段是否被标记
             if (!markPropertySet.contains(BeanUtils.parse(excelExportEntity.getMethod()))){
